@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-family: 'Roboto Mono', monospace;
+    transition: .3s ease;
+}
+$size: .4rem;
+$step: 53px;
+$shadow: 0 0 10px 3px rgb(26, 63, 87);
+body{
+    overflow: hidden;
+    background: rgb(118, 161, 190);
+    min-width: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .delimiter{
+            color:white;
+            margin: 0 $size/2;
+            font-size: 1.5rem;
+        }
+        .slider{
+            padding: 0 $size;
+            margin: 0 $size*1.5;
+            background: rgb(255, 255, 255);
+            border-radius: $size;
+            box-shadow: $shadow;
+            div{
+                color: rgb(133, 133, 133);
+                padding: $size;
+                &:after{
+                    content: "";
+                    transform: translate(-50%, -50%) scale(0);
+                }
+                &.active{
+                    color: black;
+                    transform: scale(1.1);
+                    &:after{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) scale(1);
+                        content: "";
+                        width: $size*3;
+                        height: $size*3;
+                        box-shadow: $shadow;
+                        border-radius: 4px;
+                        transition: .32s cubic-bezier(0,0,0,0);
+                    }
+                }
+            }
+        }
+    }
+}
+@for $i from 1 to 4 {
+    .time#{$i}#h1{
+        transform: translateY(-1*($step*$i - $step*2));
+    }
+}
+
+@for $i from 0 to 10{
+    .time#{$i}#h2, .time#{$i}#m2, .time#{$i}#s2{
+        transform: translateY(-1*($step*$i - $step*4.5));
+    }
+}
+
+@for $i from 0 to 7{
+    .time#{$i}#m1, .time#{$i}#s1{
+        transform: translateY(-1*($step*$i - $step*2.5));
+    }
+}
