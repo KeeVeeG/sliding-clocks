@@ -7,7 +7,6 @@
     transition: .3s ease;
 }
 $size: .4rem;
-$step: 53px;
 $shadow: 0 0 10px 3px rgb(26, 63, 87);
 body{
     overflow: hidden;
@@ -58,9 +57,11 @@ body{
         }
     }
 }
-@for $i from 1 to 4 {
+
+$step: 53px;
+@for $i from 0 to 3 {
     .time#{$i}#h1{
-        transform: translateY(-1*($step*$i - $step*2));
+        transform: translateY(-1*($step*$i - $step));
     }
 }
 
